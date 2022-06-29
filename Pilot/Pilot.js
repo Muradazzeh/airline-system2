@@ -7,6 +7,13 @@ const pilotConnection = io.connect(host);
 
 pilotConnection.on("new-Flight", handleNewFlight);
 
+pilotConnection.emit("get-all")
+pilotConnection.on('flight', (flight) => {
+
+  console.log(`Pilot:Sorry i didnt catch  this flight ${flight.id}`, flight);
+  pilotConnection.emit('received', flight);
+
+})
 function handleNewFlight(payload) {
     setTimeout(() => {
 
@@ -25,3 +32,4 @@ function handleNewFlight(payload) {
    
       }, 7000)
 }
+

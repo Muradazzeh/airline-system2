@@ -24,4 +24,8 @@ setInterval(() => {
   airLine.emit("new-Flight",payload);
   }, 10000)
 
+  systemConnection.on("added",(payload)=>{
+    console.log('Thank you for adding : ', payload, ' to Queue.');
+  })
+  
   
